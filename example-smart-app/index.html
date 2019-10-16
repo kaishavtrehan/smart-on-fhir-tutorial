@@ -137,15 +137,15 @@
 					var rowStart = "<tr>"
 					var rowEnd = "</tr>"
 					var name = "<td>" + value.code.text +"</td>";
-					var value ="";
+					var valueQ ="";
 					var datev = "<td>" + value.effectiveDateTime +"</td>";
 					if(value.code.text  !== "Blood pressure" || value.code.text  !== "Unknown"){
-						value = "<td>" + value.valueQuantity.value +"</td>"
+						valueQ = "<td>" + value.valueQuantity.value +"</td>"
 					}else{
-						value = "<td>" + "" +"</td>"
+						valueQ = "<td>" + "" +"</td>"
 					}
 					
-					tblBody+= name+value+datev;
+					tblBody+= name+valueQ+datev;
 				});
 				
 				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
