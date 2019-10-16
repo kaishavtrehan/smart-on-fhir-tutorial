@@ -145,7 +145,7 @@
 						valueQ = "<td>" + "" +"</td>"
 					}
 					
-					tblBody+= name+valueQ+datev;
+					tblBody+= rowStart + name+valueQ+datev + rowEnd;
 				});
 				
 				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
