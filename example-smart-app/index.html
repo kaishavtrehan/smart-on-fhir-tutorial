@@ -127,7 +127,7 @@
 			}).then(function(response){
 				console.log("CHECK:  "+response);
 				//$("#obvDiv").text(response);
-				$each(response, function(index, value){
+				$.each(response, function(index, value){
 					console.log("index "+index+ "value " +value.text.div);
 				});
 			});
