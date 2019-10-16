@@ -139,7 +139,7 @@
 					var name = "<td>" + value.code.text +"</td>";
 					var valueQ ="";
 					var datev = "<td>" + value.effectiveDateTime +"</td>";
-					if(value.code.text  !== "Blood pressure" || value.code.text  !== "Unknown"){
+					if(value.code.text  !== "Blood pressure" || !(value.code.text  === "Unknown")){
 						valueQ = "<td>" + value.valueQuantity.value +"</td>"
 					}else{
 						valueQ = "<td>" + "" +"</td>"
