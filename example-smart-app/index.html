@@ -158,6 +158,18 @@
                             }).then(function(response){
 
                                 console.log(response);
+				$.each(response.data.entry, function(index, value){
+                                    var mrn = resource.identifier.filter(a => a.system === "urn:oid:1.1.1.1.1.1");
+                                    var nameArr = resource.name.filter(a => a.use ==="official");
+                                    var gender = resource.gender;
+                                    var dob = resource.birthDate;
+                                    
+                                    $("demo-name").val(nameArr[0].text);
+                                    $("demo-gender").val(gender);
+                                    $("demo-dob").val(dob);
+                                    $("demo-mrn").val(mrn);
+
+                                });
                             });
 		}
 	}
