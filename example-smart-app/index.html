@@ -174,15 +174,14 @@
                                 patient: smart.patient.id
                                 }
                             }).then(function(response){
-                                $.each(response.data.entry, function(index, value){
-                                    var fin = value.resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
-                                    var location = value.resource.location;
-                                    var visit_reason = value.resource.reason;
-                                    
-                                    $("#demo-fin").val(fin[0].value);
-                                    $("#demo-loc").val(location[0].location.display);
-                                    $("#demo-rfv").val(visit_reason[0].text);
-                                });
+
+                                var fin = response[0].data.entry.resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
+                                var location = response[0].data.entry.resource.location;
+                                var visit_reason = response[0].data.entry.resource.reason;
+                                
+                                $("#demo-fin").val(fin[0].value);
+                                $("#demo-loc").val(location[0].location.display);
+                                $("#demo-rfv").val(visit_reason[0].text);
                             });
 			
 		}
