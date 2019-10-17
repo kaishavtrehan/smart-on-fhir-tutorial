@@ -109,7 +109,7 @@
 	};
 	function ready(smart) {
 		if (typeof smart.patient === "object") {
-			//console.log(smart);
+			console.log(smart);
 			var patientApi = smart.patient.api;
 			patientApi.fetchAll({
 				type: "Observation",
@@ -149,31 +149,42 @@
 				});
 				
 				$("#obvDiv").append(tblStart+tblHeader+tblBody+tblEnd)
-			});
-			smart.api.search({
+            });
+            smart.api.search({
                         type: "Patient", 
                             query: {
                                     _id: smart.patient.id
                                 }
                             }).then(function(response){
-
-                                console.log(response);
-				$.each(response.data.entry, function(index, value){
-                                    $.each(response.data.entry, function(index, value){
+                                $.each(response.data.entry, function(index, value){
                                     var mrn = value.resource.identifier.filter(a => a.system === "urn:oid:1.1.1.1.1.1");
                                     var nameArr = value.resource.name.filter(a => a.use ==="official");
                                     var gender = value.resource.gender;
                                     var dob = value.resource.birthDate;
                                     
-                                    $("#demo-name").html(nameArr[0].text);
-                                    $("#demo-gender").html(gender);
-                                    $("#demo-dob").html(dob);
-                                    $("#demo-mrn").html(mrn[0].value);
-
-                                });
-
+                                    $("#demo-name").val(nameArr[0].text);
+                                    $("#demo-gender").val(gender);
+                                    $("#demo-dob").val(dob);
+                                    $("#demo-mrn").val(mrn[0].value);
                                 });
                             });
+            smart.api.search({
+                        type: "Encounter", 
+                            query: {
+                                patient: smart.patient.id
+                                }
+                            }).then(function(response){
+                                $.each(response.data.entry, function(index, value){
+                                    var fin = value.resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
+                                    var location = value.resource.location.filter(a => a.status ==="active");
+                                    var visit_reason = value.resource.reason;
+                                    
+                                    $("#demo-fin").val(fin[0].text);
+                                    $("#demo-loc").val(location[0].display);
+                                    $("#demo-rfv").val(visit_reason[0].text);
+                                });
+                            });
+			
 		}
 	}
 	function notReady(response) {
