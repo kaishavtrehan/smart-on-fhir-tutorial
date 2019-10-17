@@ -175,9 +175,9 @@
                                 }
                             }).then(function(response){
 
-                                var fin = response[0].data.entry.resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
-                                var location = response[0].data.entry.resource.location;
-                                var visit_reason = response[0].data.entry.resource.reason;
+                                var fin = response.data.entry[0].resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
+                                var location = response.data.entry[0].resource.location;
+                                var visit_reason = response.data.entry[0].resource.reason;
                                 
                                 $("#demo-fin").val(fin[0].value);
                                 $("#demo-loc").val(location[0].location.display);
