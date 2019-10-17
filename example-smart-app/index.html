@@ -176,10 +176,10 @@
                             }).then(function(response){
                                 $.each(response.data.entry, function(index, value){
                                     var fin = value.resource.identifier.filter(a => a.system === "urn:oid:3.3.3.3.3.3");
-                                    var location = value.resource.location.filter(a => a.status ==="active");
+                                    var location = value.resource.location.filter(a => a);
                                     var visit_reason = value.resource.reason;
                                     
-                                    $("#demo-fin").val(fin[0].text);
+                                    $("#demo-fin").val(fin[0].value);
                                     $("#demo-loc").val(location[0].display);
                                     $("#demo-rfv").val(visit_reason[0].text);
                                 });
