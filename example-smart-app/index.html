@@ -162,10 +162,10 @@
                                     var gender = value.resource.gender;
                                     var dob = value.resource.birthDate;
                                     
-                                    $("#demo-name").val(nameArr[0].text);
-                                    $("#demo-gender").val(gender);
-                                    $("#demo-dob").val(dob);
-                                    $("#demo-mrn").val(mrn[0].value);
+                                    $("#demo-name").html(nameArr[0].text);
+                                    $("#demo-gender").html(gender);
+                                    $("#demo-dob").html(dob);
+                                    $("#demo-mrn").html(mrn[0].value);
                                 });
                             });
             smart.api.search({
@@ -179,9 +179,9 @@
                                 var location = response.data.entry[0].resource.location;
                                 var visit_reason = response.data.entry[0].resource.reason;
                                 
-                                $("#demo-fin").val(fin[0].value);
-                                $("#demo-loc").val(location[0].location.display);
-                                $("#demo-rfv").val(visit_reason[0].text);
+                                $("#demo-fin").html(fin[0].value);
+                                $("#demo-loc").html(location[0].location.display);
+                                $("#demo-rfv").html(visit_reason[0].text);
                             });
 			
 		}
